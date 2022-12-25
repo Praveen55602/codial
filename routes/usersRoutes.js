@@ -15,7 +15,7 @@ router.get("/sign-In", userController.signIn);
 
 router.post("/create", userController.createUser);
 
-router.post("/createSession", userController.signIn);
+router.post("/create-Session", userController.createSession);
 
 console.log("Router Loaded");
 module.exports = router;
