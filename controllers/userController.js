@@ -1,7 +1,9 @@
 const user = require("../models/user");
 
 module.exports.profile = (req, res) => {
-  return res.end("<h1>user profile action</h1>");
+  console.log(req.user);
+
+  return res.render("user_profile", { title: "profile page" });
 };
 
 module.exports.signUp = (req, res) => {
@@ -47,5 +49,14 @@ module.exports.createUser = (req, res) => {
 };
 
 module.exports.createSession = (req, res) => {
-  user.find({ email: req.body.email }, (err, curUser) => {});
+  return res.redirect("/users/profile");
+};
+
+module.exports.destroySession = (req, res) => {
+  req.logout(function (err) {
+    if (err) {
+      return next(err);
+    }
+    return res.redirect("/");
+  });
 };
