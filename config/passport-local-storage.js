@@ -8,8 +8,8 @@ passport.use(
     {
       usernameField: "email", // this will same as defined in the user model file
     },
-    (email, password, done) => {
-      UserModel.findOne({ username: email }, function (err, user) {
+    (enteredEmail, password, done) => {
+      UserModel.findOne({ email: enteredEmail }, function (err, user) {
         if (err) {
           console.log("there was some error");
           return done(err);
