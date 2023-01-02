@@ -49,7 +49,7 @@ module.exports.createUser = (req, res) => {
 };
 
 module.exports.createSession = (req, res) => {
-  return res.redirect("/users/profile");
+  return res.redirect("/");
 };
 
 module.exports.destroySession = (req, res) => {

@@ -5,7 +5,7 @@ module.exports.createPost = (req, res) => {
   post.create(
     {
       content: req.body.postContent,
-      //user: req.user._id,
+      user: req.user._id,
     },
     (err, newPost) => {
       if (err) {

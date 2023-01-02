@@ -3,10 +3,46 @@
 <head>
     <title><%=title%></title>
     <h1>this is the home page</h1>
-    <form action="post/create-post" method="post">
-        <textarea name="postContent" cols="30" rows="3"></textarea>
-        <input type="submit" , value="post">
-    </form>
+    <% if(locals.user){%>
+        <form action="post/create-post" method="post">
+            <textarea required name="postContent" cols="30" rows="3"></textarea>
+            <input type="submit" , value="post">
+        </form>
+    <%}%>
+    <% for(post of allPosts) {%>
+        <p> 
+            <li>
+                <%= post.content%> 
+            </li>
+            <li>
+                <%= post.user?.name%>
+            </li>
+            <div class="post-comments">
+                <ul>
+                    <% for( comment of post.comments){%>
+                    <p>
+                        <%= comment.content %>
+                        <br>
+                        <small>
+                            <%= comment.user.name %>
+                        </small>
+                    </p>
+                    <%}%>
+                </ul>
+            </div>
+
+
+        </p>
+        <div class="post-comment">
+            <% if(locals.user){%>
+                comment..
+                <form action="<%=`/comments/create-comment?postId=${post._id}`%>" method="post">
+                    <textarea required name="comment" cols="30" rows="1"></textarea>
+                    <input type="submit" , value="post">
+                </form>
+            <%}%>
+        </div>
+    <%}%>    
 </head>
 <body>
     
