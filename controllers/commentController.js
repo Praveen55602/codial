@@ -47,5 +47,5 @@ module.exports.destroy = (req, res) => {
     }
   });
   //console.log("failed to delete the comment");
-  //return res.redirect("back");
+  // return res.redirect("back");
 };
