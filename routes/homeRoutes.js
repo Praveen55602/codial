@@ -13,6 +13,8 @@ router.get("/", homeController.home);
 router.use("/users", require("./usersRoutes"));
 router.use("/post", require("./postRoutes"));
 router.use("/comments", require("./commentRoutes"));
+// if the name of file would have been index then we don't need to mention the name
+router.use("/api", require("./api/apiindex"));
 
 console.log("Router Loaded");
 module.exports = router;
