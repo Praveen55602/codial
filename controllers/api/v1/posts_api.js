@@ -13,17 +13,23 @@ module.exports.DeletePost = async (req, res) => {
   try {
     let foundPost = await Post.findById(req.params.id);
 
-    await foundPost.remove();
-    console.log("post deleted successfully!");
-    await comments.deleteMany({ post: req.params.id });
-    console.log("comments deleted successfully!!");
+    console.log(req.user);
+    // if (foundPost.user != req.user.id)
+    //   return res.json(401, {
+    //     messsage: "You are not authorized",
+    //   });
+
+    // await foundPost.remove();
+    // console.log("post deleted successfully!");
+    // await comments.deleteMany({ post: req.params.id });
+    // console.log("comments deleted successfully!!");
 
     return res.json(200, {
-      message: "post deleted successfully!",
+      message: "post and assosiated comments deleted successfully!",
     });
   } catch (error) {
     console.log(error);
-    res.json(500, {
+    return res.json(500, {
       message: "some error occurred!",
     });
   }
